@@ -69,10 +69,9 @@ int loop(int alert, int statement, int arr_size, struct Reader_type arr[]) {
     case 2: {
         system("clear");
         int temp_arr[arr_size];
-        // for (int i = 0; i < arr_size; i++) {
-        //     temp_arr[i] = arr[i].id;
-        //     std::cout << temp_arr[i] << std::endl;
-        // }
+        for (int i = 0; i < arr_size; i++) {
+            temp_arr[i] = arr[i].id;
+        }
         for (int i = 0; i < arr_size - 1; i++)
         {
             for (int j = 0; j < arr_size - i - 1; j++)
@@ -86,10 +85,10 @@ int loop(int alert, int statement, int arr_size, struct Reader_type arr[]) {
 
         for (int i = 0; i < arr_size; i++) {
             // int value = temp_arr[i];
-            std::cout << temp_arr[i] << std::endl;
             for (int j = 0; j < arr_size; j++) {
                 int pizza = arr[j].id;
                 if (temp_arr[i] == pizza) {
+                    std::cout << "----- Object No." << i + 1 << "-----" << std::endl;
                     std::cout << "Name: " << arr[j].name << std::endl;
                     temp_int = arr[j].id;
                     std::cout << "ID: " << temp_int << std::endl;
@@ -119,6 +118,7 @@ int loop(int alert, int statement, int arr_size, struct Reader_type arr[]) {
     }
 
     if (statement == 5) {
+        system("clear");
         return 0;
     } else {
         alert++;
