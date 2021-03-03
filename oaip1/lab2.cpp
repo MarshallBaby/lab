@@ -136,14 +136,14 @@ int loop(int alert, int statement, int arr_size, struct Reader_type arr[]) {
                 std::cout << "Book name: " << arr[i].book_name << std::endl;
                 std::cout << "Lease: " << arr[i].lease << std::endl;
                 std::cout << "\n";
-                confirm_by_enter(); 
                 break; // как только находим объект прерываем цикл, т.к. дело сделано
             }
 
+        }
             std::cout << "\nNo match\n" << std::endl;
             confirm_by_enter();
 
-        }
+        
     }
     break;
     case 4: {
