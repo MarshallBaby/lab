@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <algorithm>
 
 char temp;
 int temp_int;
@@ -46,32 +47,78 @@ void confirm_by_enter() {
 }
 
 
-
 int loop(int alert, int statement, int arr_size, struct Reader_type arr[]) {
 
     switch (statement = menu_echo()) {
     case 1: {
         system("clear");
+        std::cout << statement << std::endl;
+
         for (int i = 0; i < arr_size; i++) {
             std::cout << "----- Object No." << i + 1 << "-----" << std::endl;
             std::cout << "Name: " << arr[i].name << std::endl;
             temp_int = arr[i].id;
             std::cout << "ID: " << temp_int << std::endl;
             std::cout << "Book name: " << arr[i].book_name << std::endl;
-            std::cout << "Lease: " << arr[i].lease << std::endl; 
+            std::cout << "Lease: " << arr[i].lease << std::endl;
             std::cout << "\n";
         }
         confirm_by_enter();
     }
     break;
-    default: {
+    case 2: {
         system("clear");
+        int temp_arr[arr_size];
+        // for (int i = 0; i < arr_size; i++) {
+        //     temp_arr[i] = arr[i].id;
+        //     std::cout << temp_arr[i] << std::endl;
+        // }
+        for (int i = 0; i < arr_size - 1; i++)
+        {
+            for (int j = 0; j < arr_size - i - 1; j++)
+            {
+                if (temp_arr[j] > temp_arr[j + 1])
+                {
+                    std::swap(temp_arr[j], temp_arr[j + 1]);
+                }
+            }
+        }
+
+        for (int i = 0; i < arr_size; i++) {
+            // int value = temp_arr[i];
+            std::cout << temp_arr[i] << std::endl;
+            for (int j = 0; j < arr_size; j++) {
+                int pizza = arr[j].id;
+                if (temp_arr[i] == pizza) {
+                    std::cout << "Name: " << arr[j].name << std::endl;
+                    temp_int = arr[j].id;
+                    std::cout << "ID: " << temp_int << std::endl;
+                    std::cout << "Book name: " << arr[j].book_name << std::endl;
+                    std::cout << "Lease: " << arr[j].lease << std::endl;
+                    std::cout << "\n";
+                }
+            }
+        }
+
+        confirm_by_enter();
+    }
+    break;
+    case 5: {
+
+    }
+    break;
+    default: {
+
+        system("clear");
+
+
         std::cout << "Invalid input" << std::endl;
         confirm_by_enter();
     }
+    break;
     }
 
-    if (statement == 6) {
+    if (statement == 5) {
         return 0;
     } else {
         alert++;
@@ -80,7 +127,6 @@ int loop(int alert, int statement, int arr_size, struct Reader_type arr[]) {
             std::cout << "EXIT due to TypeError" << std::endl;
             return 0;
         }
-        std::cout << statement << "  AWdadwad" << std::endl;
         loop(alert, statement, arr_size, arr);
     }
 
