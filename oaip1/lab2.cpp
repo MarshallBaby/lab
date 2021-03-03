@@ -125,10 +125,11 @@ int loop(int alert, int statement, int arr_size, struct Reader_type arr[]) {
         system("clear");
         std::cout << "Input ID: ";
         int find_id;
+        bool toggle=false;
         std::cin >> find_id; //принимаем ID с клавы
         for (int i = 0; i < arr_size; i++) { // в цикле ищем объект с нужным id
 
-            if (find_id == arr[i].id) {
+            if (find_id == arr[i].id && !toggle) {
                 std::cout << "\n----- Object " << "-----" << std::endl;
                 std::cout << "Name: " << arr[i].name << std::endl;
                 temp_int = arr[i].id;
@@ -136,13 +137,16 @@ int loop(int alert, int statement, int arr_size, struct Reader_type arr[]) {
                 std::cout << "Book name: " << arr[i].book_name << std::endl;
                 std::cout << "Lease: " << arr[i].lease << std::endl;
                 std::cout << "\n";
-                break; // как только находим объект прерываем цикл, т.к. дело сделано
+                toggle = true;
+                confirm_by_enter();
+                //break; // как только находим объект прерываем цикл, т.к. дело сделано
             }
 
         }
+        if(!toggle){
             std::cout << "\nNo match\n" << std::endl;
             confirm_by_enter();
-
+        }
         
     }
     break;
